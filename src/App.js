@@ -16,6 +16,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
+      <Amount/>
       <CurrencyConverter />
     </Provider>
   );
