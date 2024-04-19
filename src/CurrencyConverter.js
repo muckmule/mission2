@@ -35,3 +35,20 @@ const CurrencyConverter = () => {
 };
 
 export default CurrencyConverter;
+
+const Amount = styled.div`
+background-color: #dddddd;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding: 1em;
+
+input {
+    width: 70%;
+    padding: .5em;
+}
+
+select {
+    width: 20%;
+}
+`;
