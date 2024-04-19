@@ -10,5 +10,20 @@ export const updateAmount = (amount) => ({
 
 export const updateCurrency = (currency) => async (dispatch) => {
   dispatch({ type: UPDATE_CURRENCY, payload: currency });
-  // API 호출하여 환율 정보 가져오기 및 처리
+  
+  let response = null;
+  const url = "https://api.apilayer.com/exchangerates_data/convert";
+
+  response = await axios.get(url, {
+      params: {
+          amount: amount,
+          from: from,
+          to: to,
+      },
+      headers: {
+          apikey: process.env.REACT_APP_APILAYER_KEY,
+      },
+  });
+
+  return response;
 };
