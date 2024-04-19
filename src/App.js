@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { Provider } from 'react-redux';
+import { applyMiddleware } from 'redux';
+import createStore from 'redux';
 
-function App() {
+import thunk from 'redux-thunk';
+import rootReducer from './reducers';
+import CurrencyConverter from './CurrencyConverter';
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+const App = () => {
+  useEffect(() => {
+    // 화폐 목록을 가져오는 API 호출 등 앱 초기화 작업 수행
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <CurrencyConverter />
+    </Provider>
   );
-}
+};
 
 export default App;
